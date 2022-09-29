@@ -32,7 +32,8 @@ MIDDLEWARE = [
 LOGIN_REQUIRED_URLS = (r'^.*$',) #restrict any possible URL
 LOGIN_REQUIRED_URLS_EXCEPTIONS = (r'/accounts/.*$',)
 ```
-5. It may be a good idea to define the [LOGIN_REDIRECT_URL](https://docs.djangoproject.com/en/4.1/ref/settings/#login-redirect-url) setting if restricting everything except the login page.
+5. It may be a good idea to define the [LOGIN_REDIRECT_URL](https://docs.djangoproject.com/en/4.1/ref/settings/#login-redirect-url) and [LOGIN_URL](https://docs.djangoproject.com/en/4.1/ref/settings/#login-url) settings if restricting everything except the login page.
 ```
 LOGIN_REDIRECT_URL = 'index'
+LOGIN_URL = 'login'
 ```
