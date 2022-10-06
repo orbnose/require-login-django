@@ -6,6 +6,8 @@ The middleware code and description comes from [This stackoverflow thread](https
 The middleware wraps view calls in the [login_required](https://docs.djangoproject.com/en/4.1/topics/auth/default/#the-login-required-decorator) decorator from Django.
 By default, it looks for a URL pattern of */accounts/login/*, etc., and looks for templates in */registration/*.
 
+Note that the URLConf for this app assumes a view with name of **'index'**. The app will offer a link back to the assumed index after changing a password.
+
 Quick start
 -----------
 1. Run python -m pip install git+https://github.com/orbnose/require-login-django#egg=require-login-django
@@ -43,6 +45,14 @@ LOGIN_REQUIRED_URLS_EXCEPTIONS = (r'/accounts/login/.*$',)
 ```
 LOGIN_URL = 'requirelogin:login'
 ```
+Define the LOGOUT_URL and CHANGE_PASSWORD_URL settings to point to the logout and change password views.
+These are intended to allow easier access to the account functions from other apps. 
+(Note: these are not build-in Django settings; the other app must load the settings itself. See the [rosegarden custom tag](https://github.com/orbnose/rose-garden/blob/main/rosegarden/templatetags/settings_tag.py) for an example.
+```
+LOGOUT_URL = 'requirelogin:logout'
+CHANGE_PASSWORD_URL = 'reuqirelogin:change_password'
+```
+
 7. It may be a good idea to define the [LOGIN_REDIRECT_URL](https://docs.djangoproject.com/en/4.1/ref/settings/#login-redirect-url) setting if restricting everything except the login page.
 ```
 LOGIN_REDIRECT_URL = 'index'

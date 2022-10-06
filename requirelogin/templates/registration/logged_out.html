@@ -1,0 +1,14 @@
+{% extends "registration/baseTemplate.html" %}
+
+{% block title %}Logged Out{% endblock %}
+
+{% block content %}
+    <p>
+        You have been logged out. 
+    </p>
+    
+    <p>
+        Would you like to <a href="{% url 'requirelogin:login' %}">log in again?</a>
+    </p>
+
+{% endblock content%}

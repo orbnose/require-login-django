@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseForbidden, HttpResponseNotFound
+from django.http import HttpResponse, HttpResponseForbidden
 
 # Create your views here.
+
+# Test Views
 
 def index(request):
     return HttpResponse('index page for ' + request.user.username)
